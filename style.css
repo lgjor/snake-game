@@ -45,7 +45,7 @@ body,
 #instruction-text {
     position: absolute;
     /* Mobile First: Posição e largura para telas pequenas */
-    top: 38%;
+    top: 52%; /* Movido para baixo para evitar sobreposição */
     color: #333;
     width: 300px;
     text-align: center;
@@ -94,7 +94,7 @@ body,
 #logo {
     position: absolute;
     /* Mobile First: Posição e tamanho para telas pequenas */
-    top: 19%;
+    top: 18%; /* Movido ligeiramente para cima */
     transform: scale(0.6);
 }
 
