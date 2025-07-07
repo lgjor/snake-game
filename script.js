@@ -1,7 +1,6 @@
 // Define HTML elements
 const board = document.getElementById('game-board');
-const instructionText = document.getElementById('instruction-text');
-const logo = document.getElementById('logo');
+const gameInfo = document.getElementById('game-info');
 const gridSize = 20;
 const score = document.getElementById('score');
 const highScoreText = document.getElementById('highScore');
@@ -158,8 +157,7 @@ function stopCurrentMusic() {
 function startGame() {
     playMusic('theSnakeGame');
     gameStarted = true; // Keep track of a running game
-    instructionText.style.display = 'none';
-    logo.style.display = 'none';
+    gameInfo.style.display = 'none';
     gameInterval = setInterval(() => {
         moveSnake();
         checkCollision();
@@ -238,8 +236,7 @@ function resetGame() {
     gameSpeedDelay = 200;
     updateScore();
     gameStarted = false;
-    instructionText.style.display = 'block';
-    logo.style.display = 'block';
+    gameInfo.style.display = 'block';
 }
 
 function updateScore() {
@@ -250,8 +247,7 @@ function updateScore() {
 function stopGame() {
     clearInterval(gameInterval);
     gameStarted = false;
-    instructionText.style.display = 'block';
-    logo.style.display = 'block';
+    gameInfo.style.display = 'block';
 }
 
 function updateHighScore() {
