@@ -42,16 +42,25 @@ body,
     box-shadow: inset 0 0 0 5px #8b9666;
 }
 
-#instruction-text {
+/* Novo container para gerenciar o relacionamento entre o logo e o texto */
+#game-info {
     position: absolute;
-    /* Mobile First: Posição e largura para telas pequenas */
-    top: 52%; /* Movido para baixo para evitar sobreposição */
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os itens horizontalmente */
+    gap: 10px; /* Define o espaço entre o logo e o texto */
+}
+
+#instruction-text {
     color: #333;
-    width: 300px;
     text-align: center;
     text-transform: capitalize;
-    padding: 30px;
-    margin: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0; /* Remove a margem padrão do parágrafo */
 }
 
 .scores {
@@ -92,10 +101,7 @@ body,
 }
 
 #logo {
-    position: absolute;
-    /* Mobile First: Posição e tamanho para telas pequenas */
-    top: 18%; /* Movido ligeiramente para cima */
-    transform: scale(0.6);
+    transform: scale(0.6); /* Ajusta o tamanho do logo para mobile */
 }
 
 /* --- Media Query para Telas Maiores (Desktop) --- */
@@ -113,8 +119,9 @@ body,
         grid-template-rows: repeat(20, 2.5vmin);
     }
 
-    #instruction-text {
-        top: 60%;
+    #game-info {
+        top: 53%;
+        gap: 20px; /* Aumenta um pouco o espaço no desktop */
     }
     #score,
     #highScore {
@@ -124,7 +131,6 @@ body,
     }
     #logo {
         /* Restaura a posição e o tamanho originais do logo */
-        top: initial; /* 'initial' reseta para o valor padrão do navegador */
-        transform: scale(.7);
+        transform: scale(0.7);
     }
 }
