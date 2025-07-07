@@ -2,6 +2,8 @@
 
 Um clone simples e clássico do jogo da cobrinha (Snake Game) desenvolvido utilizando apenas HTML, CSS e JavaScript.
 
+Música por 8-bit-Music: [https://www.youtube.com/watch?v=FpDWpX9luCQ](https://www.youtube.com/watch?v=FpDWpX9luCQ)
+
 ## 🎮 Como Jogar
 
 - **Use as setas do teclado** (`↑`, `↓`, `←`, `→`) para controlar a direção da cobra.
