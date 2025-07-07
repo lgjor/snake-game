@@ -1,18 +1,22 @@
 body {
     display: flex;
-    /* Mobile First: Alinha ao topo por padrão */
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
     font-family: "VT323", monospace;
-    padding-top: 10vh; /* Espaçamento para mobile */
     overflow: hidden;
 }
 
 body,
 .snake {
     background-color: #414141;
+}
+
+/* Adicionado para ser o contexto de posicionamento para #game-info */
+#game-container {
+    position: relative;
 }
 
 #game-board{
@@ -59,7 +63,7 @@ body,
     text-align: center;
     text-transform: capitalize;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin: 0; /* Remove a margem padrão do parágrafo */
 }
 
@@ -101,17 +105,64 @@ body,
 }
 
 #logo {
-    transform: scale(0.6); /* Ajusta o tamanho do logo para mobile */
+    transform: scale(0.7); /* Ajusta o tamanho do logo para mobile */
 }
+
+/* Mobile Controls */
+#mobile-controls {
+    display: none; /* Escondido em telas grandes */
+}
+
+/* Media Query para mostrar os controles em dispositivos móveis */
+@media (max-width: 768px) {
+    #mobile-controls {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .d-pad {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        width: 150px;
+        height: 150px;
+        grid-template-areas:
+            ". up ."
+            "left . right"
+            ". down .";
+    }
+
+    .control-btn {
+        font-family: 'VT323', monospace;
+        font-size: 24px;
+        background-color: #c2c2c2;
+        border: 2px solid #555;
+        border-radius: 8px;
+        cursor: pointer;
+        touch-action: manipulation; /* Evita zoom com toque duplo */
+        user-select: none; /* Evita seleção de texto */
+    }
+
+    .control-btn:active {
+        background-color: #999;
+    }
+
+    #up-btn { grid-area: up; }
+    #down-btn { grid-area: down; }
+    #left-btn { grid-area: left; }
+    #right-btn { grid-area: right; }
+
+    #start-btn {
+        padding: 20px 30px;
+    }
+}
+
 
 /* --- Media Query para Telas Maiores (Desktop) --- */
 @media (min-width: 551px) {
-    body {
-        /* Restaura a centralização e remove o padding do topo */
-        align-items: center;
-        padding-top: 0;
-    }
-
     #game-board {
         /* Aumenta o tabuleiro para o tamanho original de desktop */
         /* Usa vmin para tornar o tabuleiro responsivo ao tamanho da janela */
@@ -120,7 +171,6 @@ body,
     }
 
     #game-info {
-        top: 53%;
         gap: 20px; /* Aumenta um pouco o espaço no desktop */
     }
     #score,
@@ -131,6 +181,6 @@ body,
     }
     #logo {
         /* Restaura a posição e o tamanho originais do logo */
-        transform: scale(0.7);
+        transform: scale(.7);
     }
 }

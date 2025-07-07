@@ -6,6 +6,12 @@ const gridSize = 20;
 const score = document.getElementById('score');
 const highScoreText = document.getElementById('highScore');
 const pathAudio = 'audio/';
+// Seleciona os botões do DOM
+const upButton = document.getElementById('up-btn');
+const downButton = document.getElementById('down-btn');
+const leftButton = document.getElementById('left-btn');
+const rightButton = document.getElementById('right-btn');
+const startButton = document.getElementById('start-btn');
 
 // Define game variables
 let snake = [{x: 10, y:10}];
@@ -24,6 +30,23 @@ function draw() {
     drawSnake();
     drawFood();
     updateScore();
+}
+
+// Adiciona listeners de evento de clique para cada botão
+startButton.addEventListener('click', () => dispatchKeyEvent(' ')); // Simula a barra de espaço
+upButton.addEventListener('click', () => dispatchKeyEvent('ArrowUp')); // Simula a seta para cima
+downButton.addEventListener('click', () => dispatchKeyEvent('ArrowDown')); // Simula a seta para baixo
+leftButton.addEventListener('click', () => dispatchKeyEvent('ArrowLeft')); // Simula a seta para a esquerda
+rightButton.addEventListener('click', () => dispatchKeyEvent('ArrowRight')); // Simula a seta para a direita
+
+// Esta função cria e dispara um evento de pressionamento de tecla
+function dispatchKeyEvent(key) {
+    const event = new KeyboardEvent('keydown', {
+        key: key,
+        bubbles: true,
+        cancelable: true,
+    });
+    document.dispatchEvent(event);
 }
 
 // Draw the snake on the game board
