@@ -154,15 +154,19 @@ function handleKeyPress(event) {
     } else {
         switch (event.key) {
             case 'ArrowUp':
+                event.preventDefault();
                 direction = 'up';
                 break;
             case 'ArrowDown':
+                event.preventDefault();
                 direction = 'down';
                 break;
             case 'ArrowLeft':
+                event.preventDefault();
                 direction = 'left';
                 break;
             case 'ArrowRight':
+                event.preventDefault();
                 direction = 'right';
                 break;
         }
@@ -201,13 +205,14 @@ function checkCollision() {
 
 function resetGame() {
     stopCurrentMusic();
+    sfxMusicController = 0;
     updateHighScore();
     stopGame();
     clearInterval(gameInterval);
     snake = [{ x: 10, y: 10 }];
     food = generateFood();
     direction = 'right';    
-    gamneSpeedDelay = 200;
+    gameSpeedDelay = 200;
     updateScore();
     gameStarted = false;
     instructionText.style.display = 'block';

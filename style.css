@@ -1,10 +1,13 @@
 body {
     display: flex;
-    align-items: center;
+    /* Mobile First: Alinha ao topo por padrão */
+    align-items: flex-start;
     justify-content: center;
     height: 100vh;
     margin: 0;
     font-family: "VT323", monospace;
+    padding-top: 10vh; /* Espaçamento para mobile */
+    overflow: hidden;
 }
 
 body,
@@ -15,20 +18,21 @@ body,
 #game-board{
     border-radius: 100px;
     display: grid;
-    grid-template-columns: repeat(20, 20px);
-    grid-template-rows: repeat(20, 20px);
+    /* Mobile First: Tamanho menor por padrão */
+    grid-template-columns: repeat(20, 12px);
+    grid-template-rows: repeat(20, 12px);
     margin: 5px;
 }
 
 .game-border-1 {
     border: #595F43 solid 10px;
-    border-radius: 30px;
+    border-radius: 40px;
     box-shadow: inset 0 0 0 10px #595F43;
 }
 
 .game-border-2 {
     border: #abb788 solid 8px;
-    border-radius: 26px;
+    border-radius: 30px;
     box-shadow: inset 0 0 0 10px #abb788;
 }
 
@@ -40,7 +44,8 @@ body,
 
 #instruction-text {
     position: absolute;
-    top: 60%;
+    /* Mobile First: Posição e largura para telas pequenas */
+    top: 38%;
     color: #333;
     width: 300px;
     text-align: center;
@@ -56,11 +61,14 @@ body,
 
 #score {
     color: #abb78a;
+    /* Mobile First: Cor de alto contraste por padrão */
+    color: #595F43;
 }
 
 #score,
 #highScore {
-    font-size: 40px;
+    /* Mobile First: Tamanho de fonte para telas pequenas */
+    font-size: 2.2rem;
     font-weight: bolder;
     margin: 10px 0;
 }
@@ -85,4 +93,38 @@ body,
 
 #logo {
     position: absolute;
+    /* Mobile First: Posição e tamanho para telas pequenas */
+    top: 19%;
+    transform: scale(0.6);
+}
+
+/* --- Media Query para Telas Maiores (Desktop) --- */
+@media (min-width: 551px) {
+    body {
+        /* Restaura a centralização e remove o padding do topo */
+        align-items: center;
+        padding-top: 0;
+    }
+
+    #game-board {
+        /* Aumenta o tabuleiro para o tamanho original de desktop */
+        /* Usa vmin para tornar o tabuleiro responsivo ao tamanho da janela */
+        grid-template-columns: repeat(20, 2.5vmin);
+        grid-template-rows: repeat(20, 2.5vmin);
+    }
+
+    #instruction-text {
+        top: 60%;
+    }
+    #score,
+    #highScore {
+        /* A fonte também se torna responsiva para manter a proporção */
+        font-size: 4vmin;
+        color: #abb78a; /* Restaura a cor original do score */
+    }
+    #logo {
+        /* Restaura a posição e o tamanho originais do logo */
+        top: initial; /* 'initial' reseta para o valor padrão do navegador */
+        transform: scale(.7);
+    }
 }
