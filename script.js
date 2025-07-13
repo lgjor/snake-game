@@ -229,14 +229,11 @@ function resetGame() {
     sfxMusicController = 0;
     updateHighScore();
     stopGame();
-    clearInterval(gameInterval);
     snake = [{ x: 10, y: 10 }];
     food = generateFood();
     direction = 'right';    
     gameSpeedDelay = 200;
     updateScore();
-    gameStarted = false;
-    gameInfo.style.display = 'block';
 }
 
 function updateScore() {

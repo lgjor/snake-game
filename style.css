@@ -181,6 +181,9 @@ body,
     }
     #logo {
         /* Restaura a posição e o tamanho originais do logo */
-        transform: scale(.7);
+        transform: scale(.9);
+    }
+    #instruction-text {
+        font-size: 2rem;
     }
 }
